@@ -1,0 +1,114 @@
+<div class="refill">
+  <div class="container">
+    <h2 class="text-center">Refilling Form</h2>
+    <br />
+    <form (ngSubmit)="orderRefillSubmit()">
+      <table class="center" cellpadding="5%">
+        <tr class="text-center" style="background-color: LightGray">
+          <th>SR</th>
+          <th>Container</th>
+          <th>Max Capacity</th>
+          <th>Available</th>
+          <th>Fill</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Tea</td>
+          <td>2 kg</td>
+          <td>1.89 kg</td>
+          <!--Delete line above and comment tags from line below-->
+          <!--<td>{{ container.tea }}</td>-->
+          <td>
+            <input
+              type="text"
+              size="2"
+              placeholder="0.0"
+              name="tea"
+              [(ngModel)]="refill.tea"
+            />
+            kg
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Coffee</td>
+          <td>2 kg</td>
+          <td>2 kg</td>
+          <!--Delete line above and comment tags from line below-->
+          <!--<td>{{ container.coffee }}</td>-->
+          <td>
+            <input
+              type="text"
+              size="2"
+              placeholder="0.0"
+              name="coffee"
+              [(ngModel)]="refill.coffee"
+            />
+            kg
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Sugar</td>
+          <td>8 kg</td>
+          <td>7.91 kg</td>
+          <!--Delete line above and comment tags from line below-->
+          <!--<td>{{ container.sugar }}</td>-->
+          <td>
+            <input
+              type="text"
+              size="2"
+              placeholder="0.0"
+              name="sugar"
+              [(ngModel)]="refill.sugar"
+            />
+            kg
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Water</td>
+          <td>15 liters</td>
+          <td>14.17 liters</td>
+          <!--Delete line above and comment tags from line below-->
+          <!--<td>{{ container.water }}</td>-->
+          <td>
+            <input
+              type="text"
+              size="2"
+              placeholder="0.0"
+              name="water"
+              [(ngModel)]="refill.water"
+            />
+            liters
+          </td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Milk</td>
+          <td>15 liters</td>
+          <td>14.39 liters</td>
+          <!--Delete line above and comment tags from line below-->
+          <!--<td>{{ container.milk }}</td>-->
+          <td>
+            <input
+              type="text"
+              size="2"
+              placeholder="0.0"
+              name="milk"
+              [(ngModel)]="refill.milk"
+            />
+            liters
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><button type="submit">Fill Container</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>

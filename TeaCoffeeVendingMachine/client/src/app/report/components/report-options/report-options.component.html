@@ -1,0 +1,29 @@
+<div class="report">
+  <div class="container">
+    <h2 class="text-center">Report Options</h2>
+    <br />
+    <table class="center" cellpadding="5%">
+      <tr>
+        <th style="background-color: LightGray">Total Sales Report</th>
+        <td>
+          <a class="nav-link" [routerLink]="['/report/today-sales']">Today</a>
+        </td>
+        <td>
+          <a class="nav-link" [routerLink]="['/report/all-days-sales']">All</a>
+        </td>
+      </tr>
+      <tr>
+        <th style="background-color: LightGray">Refilling Counter Details</th>
+        <td class="nav-link" [routerLink]="['/report/refilling-counter']">
+          View
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <th style="background-color: LightGray">Container Status</th>
+        <td class="nav-link" [routerLink]="['/container-status']">View</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+</div>

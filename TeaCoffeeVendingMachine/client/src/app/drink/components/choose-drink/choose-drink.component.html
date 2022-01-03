@@ -1,0 +1,61 @@
+<div class="drink">
+  <div class="container">
+    <h2 class="text-center">Choose Drink</h2>
+    <br />
+    <form (ngSubmit)="chooseDrinkSubmit()">
+      <table class="center" cellpadding="5%">
+        <tr>
+          <th style="background-color: LightGray">Tea</th>
+          <td>
+            <input type="text" size="2" name="tea" [(ngModel)]="drink.cups" />
+            Cup
+          </td>
+          <td>Rs. 10.0/Cup</td>
+          <td><button type="submit">Get drink</button></td>
+        </tr>
+        <tr>
+          <th style="background-color: LightGray">Black Tea</th>
+          <td>
+            <input
+              type="text"
+              size="2"
+              name="blacktea"
+              [(ngModel)]="drink.cups"
+            />
+            Cup
+          </td>
+          <td>Rs. 5.0/Cup</td>
+          <td><button type="submit">Get drink</button></td>
+        </tr>
+        <tr>
+          <th style="background-color: LightGray">Coffee</th>
+          <td>
+            <input
+              type="text"
+              size="2"
+              name="coffee"
+              [(ngModel)]="drink.cups"
+            />
+            Cup
+          </td>
+          <td>Rs. 15.0/Cup</td>
+          <td><button type="submit">Get drink</button></td>
+        </tr>
+        <tr>
+          <th style="background-color: LightGray">Black Coffee</th>
+          <td>
+            <input
+              type="text"
+              size="2"
+              name="blackcoffee"
+              [(ngModel)]="drink.cups"
+            />
+            Cup
+          </td>
+          <td>Rs. 10.0/Cup</td>
+          <td><button type="submit">Get drink</button></td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
