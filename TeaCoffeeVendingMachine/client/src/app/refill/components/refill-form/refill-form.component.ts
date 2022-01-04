@@ -79,7 +79,6 @@ export class RefillFormComponent implements OnInit {
           this.err = err.error;
         }
       );
-      this.router.navigate(['/refill']);
     }
   }
 }
