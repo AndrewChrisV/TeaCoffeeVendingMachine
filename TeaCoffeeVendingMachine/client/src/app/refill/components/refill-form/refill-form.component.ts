@@ -10,6 +10,7 @@ import { RefillService } from '../../services/refill.service';
 })
 export class RefillFormComponent implements OnInit {
   refill: any = {};
+  message: string = '';
   //container: any = {};
   err: any = {};
 
@@ -34,13 +35,51 @@ export class RefillFormComponent implements OnInit {
   }
 
   orderRefillSubmit() {
-    console.log(JSON.stringify(this.refill));
-    this.refillService.orderRefill(this.refill).subscribe(
-      (refill) => {},
-      (err) => {
-        this.err = err.error;
-      }
-    );
-    this.router.navigate(['/refill']);
+    if (this.refill.tea > 2 - 1.89) {
+      //if (this.refill.tea > 2 - this.container.tea) {
+      this.message =
+        'You cannot order more than ' +
+        (2 - 1.89).toFixed(2) +
+        //(2 - this.container.tea) +
+        ' kg of tea.';
+    } else if (this.refill.coffee > 2 - 2) {
+      //} else if (this.refill.coffee > 2 - this.container.coffee) {
+      this.message =
+        'You cannot order more than ' +
+        (2 - 2).toFixed(2) +
+        //(2 - this.container.coffee) +
+        ' kg of coffee.';
+    } else if (this.refill.sugar > 8 - 7.91) {
+      //} else if (this.refill.sugar > 8 - this.container.sugar) {
+      this.message =
+        'You cannot order more than ' +
+        (8 - 7.91).toFixed(2) +
+        //(8 - this.container.sugar) +
+        ' kg of sugar.';
+    } else if (this.refill.water > 15 - 14.17) {
+      //} else if (this.refill.water > 2 - this.container.water) {
+      this.message =
+        'You cannot order more than ' +
+        (15 - 14.17).toFixed(2) +
+        //(15 - this.container.water)
+        ' liters of water.';
+    } else if (this.refill.milk > 15 - 14.39) {
+      //} else if (this.refill.milk > 15 - this.container.milk) {
+      this.message =
+        'You cannot order more than ' +
+        (15 - 14.39).toFixed(2) +
+        //(15 - this.container.milk)
+        ' liters of milk.';
+    } else {
+      this.message = '';
+      console.log(JSON.stringify(this.refill));
+      this.refillService.orderRefill(this.refill).subscribe(
+        (refill) => {},
+        (err) => {
+          this.err = err.error;
+        }
+      );
+      this.router.navigate(['/refill']);
+    }
   }
 }
