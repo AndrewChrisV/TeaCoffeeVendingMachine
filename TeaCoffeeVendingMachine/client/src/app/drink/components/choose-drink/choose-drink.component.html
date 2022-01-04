@@ -1,5 +1,14 @@
 <div class="drink">
   <div class="container">
+    <div *ngIf="message == ''">
+      <p><br /></p>
+    </div>
+    <div *ngIf="message != ''">
+      <p class="text-center">
+        {{ message }}
+      </p>
+    </div>
+    <br />
     <h2 class="text-center">Choose Drink</h2>
     <br />
     <form (ngSubmit)="chooseDrinkSubmit()">
@@ -7,53 +16,69 @@
         <tr>
           <th style="background-color: LightGray">Tea</th>
           <td>
-            <input type="text" size="2" name="tea" [(ngModel)]="drink.cups" />
+            <input type="text" size="1" name="tea" [(ngModel)]="drink.cups" />
             Cup
           </td>
           <td>Rs. 10.0/Cup</td>
-          <td><button type="submit">Get drink</button></td>
+          <td>
+            <button type="submit" (click)="drink.name = 'tea'">
+              Get drink
+            </button>
+          </td>
         </tr>
         <tr>
           <th style="background-color: LightGray">Black Tea</th>
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               name="blacktea"
               [(ngModel)]="drink.cups"
             />
             Cup
           </td>
           <td>Rs. 5.0/Cup</td>
-          <td><button type="submit">Get drink</button></td>
+          <td>
+            <button type="submit" (click)="drink.name = 'black tea'">
+              Get drink
+            </button>
+          </td>
         </tr>
         <tr>
           <th style="background-color: LightGray">Coffee</th>
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               name="coffee"
               [(ngModel)]="drink.cups"
             />
             Cup
           </td>
           <td>Rs. 15.0/Cup</td>
-          <td><button type="submit">Get drink</button></td>
+          <td>
+            <button type="submit" (click)="drink.name = 'coffee'">
+              Get drink
+            </button>
+          </td>
         </tr>
         <tr>
           <th style="background-color: LightGray">Black Coffee</th>
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               name="blackcoffee"
               [(ngModel)]="drink.cups"
             />
             Cup
           </td>
           <td>Rs. 10.0/Cup</td>
-          <td><button type="submit">Get drink</button></td>
+          <td>
+            <button type="submit" (click)="drink.name = 'black coffee'">
+              Get drink
+            </button>
+          </td>
         </tr>
       </table>
     </form>
