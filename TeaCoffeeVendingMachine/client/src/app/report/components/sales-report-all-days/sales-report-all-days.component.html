@@ -1,35 +1,87 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ReportService } from '../../services/report.service';
-
-@Component({
-  selector: 'app-sales-report-all-days',
-  templateUrl: './sales-report-all-days.component.html',
-  styleUrls: ['./sales-report-all-days.component.css'],
-})
-export class SalesReportAllDaysComponent implements OnInit {
-  salesAllDays: any = {};
-  err: any = {};
-
-  // prices (in Rs.) per cup of each type of drink
-  costTea: number = 10;
-  costBlackTea: number = 5;
-  costCoffee: number = 15;
-  costBlackCoffee: number = 10;
-
-  constructor(private reportService: ReportService, private router: Router) {}
-
-  ngOnInit(): void {
-    this.reportService.getSalesAllDays().subscribe(
-      (req) => {
-        // Get sales report for all days from database
-        this.salesAllDays = req;
-        // Display contents of report to console
-        console.log(JSON.stringify(this.salesAllDays));
-      },
-      (err) => {
-        this.err = err.error;
-      }
-    );
-  }
-}
+<div class="all-days-sales">
+  <div class="container">
+    <h2 class="text-center">Total sales details for all days</h2>
+    <br />
+    <table class="center" cellpadding="5%">
+      <tr style="background-color: LightGray">
+        <th>SR</th>
+        <th>Drink</th>
+        <th>Number of cups</th>
+        <th>Cost</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Tea</td>
+        <!--Number of cups of tea sold ever-->
+        <td>32</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.tea }}</td>-->
+        <!--Total cost of all tea sold ever-->
+        <td>{{ 32 * costTea }}</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.tea * costTea }}</td>-->
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Black Tea</td>
+        <!--Number of cups of black tea sold ever-->
+        <td>15</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.blackTea }}</td>-->
+        <!--Total cost of all black tea sold ever-->
+        <td>{{ 15 * costBlackTea }}</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.blackTea * costBlackTea }}</td>-->
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Coffee</td>
+        <!--Number of cups of coffee sold ever-->
+        <td>22</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.coffee }}</td>-->
+        <!--Total cost of all coffee sold ever-->
+        <td>{{ 22 * costCoffee }}</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.coffee * costCoffee }}</td>-->
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Black Coffee</td>
+        <!--Number of cups of black coffee sold ever-->
+        <td>25</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.blackCoffee }}</td>-->
+        <!--Total cost of all black coffee sold ever-->
+        <td>{{ 25 * costBlackCoffee }}</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.blackCoffee * costBlackCoffee }}</td>-->
+      </tr>
+    </table>
+    <br />
+    <table class="center" cellpadding="5%">
+      <tr>
+        <th style="background-color: LightGray">Total Number of Cups</th>
+        <!--Number of cups of all drinks sold ever-->
+        <td>{{ 32 + 15 + 22 + 25 }}</td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.tea + salesAllDays.blackTea + salesAllDays.coffee + salesAllDays.blackCoffee }}</td>-->
+      </tr>
+      <tr>
+        <th style="background-color: LightGray">Total cost</th>
+        <!--Total cost of all drinks sold ever-->
+        <td>
+          {{
+            32 * costTea +
+              15 * costBlackTea +
+              22 * costCoffee +
+              25 * costBlackCoffee
+          }}
+        </td>
+        <!--Delete line above and comment tags from line below-->
+        <!--<td>{{ salesAllDays.tea * costTea + salesAllDays.blackTea * costBlackTea + salesAllDays.coffee * costCoffee + salesAllDays.blackCoffee * costBlackCoffee }}</td>-->
+      </tr>
+    </table>
+    <br />
+  </div>
+</div>
