@@ -16,7 +16,9 @@ export class RefillingCounterStatusComponent implements OnInit {
   ngOnInit(): void {
     this.reportService.getCounter().subscribe(
       (req) => {
+        // Get counter from database
         this.counter = req;
+        // Display contents of counter to console
         console.log(JSON.stringify(this.counter));
       },
       (err) => {
