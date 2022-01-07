@@ -2,6 +2,7 @@
   <div class="container">
     <h2 class="text-center">Refilling Form</h2>
     <br />
+    <!--Form to submit refill order-->
     <form (ngSubmit)="orderRefillSubmit()">
       <table class="center" cellpadding="5%">
         <tr class="text-center" style="background-color: LightGray">
@@ -14,14 +15,15 @@
         <tr>
           <td>1</td>
           <td>Tea</td>
-          <td>2 kg</td>
+          <td>{{ maxTeaCapacity }} kg</td>
           <td>1.89 kg</td>
           <!--Delete line above and comment tags from line below-->
           <!--<td>{{ container.tea }}</td>-->
+          <!--Input number of kg of tea to order-->
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               placeholder="0.0"
               name="tea"
               [(ngModel)]="refill.tea"
@@ -32,14 +34,15 @@
         <tr>
           <td>2</td>
           <td>Coffee</td>
-          <td>2 kg</td>
+          <td>{{ maxCoffeeCapacity }} kg</td>
           <td>2 kg</td>
           <!--Delete line above and comment tags from line below-->
           <!--<td>{{ container.coffee }}</td>-->
+          <!--Input number of kg of coffee to order-->
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               placeholder="0.0"
               name="coffee"
               [(ngModel)]="refill.coffee"
@@ -50,14 +53,15 @@
         <tr>
           <td>3</td>
           <td>Sugar</td>
-          <td>8 kg</td>
+          <td>{{ maxSugarCapacity }} kg</td>
           <td>7.91 kg</td>
           <!--Delete line above and comment tags from line below-->
           <!--<td>{{ container.sugar }}</td>-->
+          <!--Input number of kg of sugar to order-->
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               placeholder="0.0"
               name="sugar"
               [(ngModel)]="refill.sugar"
@@ -68,14 +72,15 @@
         <tr>
           <td>4</td>
           <td>Water</td>
-          <td>15 liters</td>
+          <td>{{ maxWaterCapacity }} liters</td>
           <td>14.17 liters</td>
           <!--Delete line above and comment tags from line below-->
           <!--<td>{{ container.water }}</td>-->
+          <!--Input number of liters of water to order-->
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               placeholder="0.0"
               name="water"
               [(ngModel)]="refill.water"
@@ -86,14 +91,15 @@
         <tr>
           <td>5</td>
           <td>Milk</td>
-          <td>15 liters</td>
+          <td>{{ maxMilkCapacity }} liters</td>
           <td>14.39 liters</td>
           <!--Delete line above and comment tags from line below-->
           <!--<td>{{ container.milk }}</td>-->
+          <!--Input number of liters of milk to order-->
           <td>
             <input
               type="text"
-              size="2"
+              size="1"
               placeholder="0.0"
               name="milk"
               [(ngModel)]="refill.milk"
@@ -106,10 +112,12 @@
           <td></td>
           <td></td>
           <td></td>
+          <!--Click button to submit order-->
           <td><button type="submit">Fill Container</button></td>
         </tr>
       </table>
     </form>
+    <!--Display error message if order cannot be fulfilled-->
     <div *ngIf="message != ''">
       <br />
       <p class="text-center">{{ message }}</p>
