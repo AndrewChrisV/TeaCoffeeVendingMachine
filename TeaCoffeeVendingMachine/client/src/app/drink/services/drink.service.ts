@@ -9,6 +9,7 @@ export class DrinkService {
   constructor(private httpClient: HttpClient) {}
 
   chooseDrink(drink: any): Observable<any> {
+    // Post drink orders to database
     return this.httpClient.post('api/drink', drink);
   }
 }
