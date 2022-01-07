@@ -11,7 +11,7 @@ export class SalesReportAllDaysComponent implements OnInit {
   salesAllDays: any = {};
   err: any = {};
 
-  // prices per cup of each type of drink
+  // prices (in Rs.) per cup of each type of drink
   costTea: number = 10;
   costBlackTea: number = 5;
   costCoffee: number = 15;
