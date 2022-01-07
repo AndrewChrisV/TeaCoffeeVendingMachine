@@ -16,7 +16,9 @@ export class SalesReportAllDaysComponent implements OnInit {
   ngOnInit(): void {
     this.reportService.getSalesAllDays().subscribe(
       (req) => {
+        // Get sales report for all days from database
         this.salesAllDays = req;
+        // Display contents of report to console
         console.log(JSON.stringify(this.salesAllDays));
       },
       (err) => {
