@@ -9,6 +9,7 @@ export class ContainerService {
   constructor(private httpClient: HttpClient) {}
 
   getContainer(): Observable<any> {
+    // Get container values from database
     return this.httpClient.get('api/container');
   }
 }
