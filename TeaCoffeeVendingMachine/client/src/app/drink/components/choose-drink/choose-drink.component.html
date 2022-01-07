@@ -3,6 +3,7 @@
     <div *ngIf="message == ''">
       <p><br /></p>
     </div>
+    <!--Display message if there is one-->
     <div *ngIf="message != ''">
       <p class="text-center">
         {{ message }}
@@ -11,8 +12,10 @@
     <br />
     <h2 class="text-center">Choose Drink</h2>
     <br />
+    <!--Form to submit drink orders-->
     <form (ngSubmit)="chooseDrinkSubmit()">
       <table class="center" cellpadding="5%">
+        <!--Order tea in this row-->
         <tr>
           <th style="background-color: LightGray">Tea</th>
           <td>
@@ -26,6 +29,7 @@
             </button>
           </td>
         </tr>
+        <!--Order black tea in this row-->
         <tr>
           <th style="background-color: LightGray">Black Tea</th>
           <td>
@@ -44,6 +48,7 @@
             </button>
           </td>
         </tr>
+        <!--Order coffee in this row-->
         <tr>
           <th style="background-color: LightGray">Coffee</th>
           <td>
@@ -62,6 +67,7 @@
             </button>
           </td>
         </tr>
+        <!--Order black coffee in this row-->
         <tr>
           <th style="background-color: LightGray">Black Coffee</th>
           <td>
