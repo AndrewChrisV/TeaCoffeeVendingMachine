@@ -9,6 +9,7 @@ export class RefillService {
   constructor(private httpClient: HttpClient) {}
 
   orderRefill(refill: any): Observable<any> {
+    // Post refill orders to database
     return this.httpClient.post('api/refill', refill);
   }
 }
