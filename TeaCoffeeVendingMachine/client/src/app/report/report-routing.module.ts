@@ -6,18 +6,22 @@ import { SalesReportAllDaysComponent } from './components/sales-report-all-days/
 import { SalesReportTodayComponent } from './components/sales-report-today/sales-report-today.component';
 
 const routes: Routes = [
+  // Report Options
   {
     path: '',
     component: ReportOptionsComponent,
   },
+  // Sales Report for all days
   {
     path: 'all-days-sales',
     component: SalesReportAllDaysComponent,
   },
+  // Sales Report for today
   {
     path: 'today-sales',
     component: SalesReportTodayComponent,
   },
+  // Refilling Counter
   {
     path: 'refilling-counter',
     component: RefillingCounterStatusComponent,
