@@ -11,7 +11,6 @@ import { DrinkService } from '../../services/drink.service';
 export class ChooseDrinkComponent implements OnInit {
   drink: any = {};
   message: string = '';
-  numberOfCups: string;
   //container: any = {};
   err: any = {};
 
@@ -36,61 +35,84 @@ export class ChooseDrinkComponent implements OnInit {
   }
 
   chooseDrinkSubmit() {
-    if (this.drink.cups == null || this.drink.cups == '') {
+    // amounts of each ingredient in one cup
+    const teaPerCup: number = 0.006;
+    const coffeePerCup: number = 0.006;
+    const waterPerCup: number = 0.065;
+    const milkPerCup: number = 0.044;
+    const sugarPerCup: number = 0.017;
+
+    if (
+      // Do not submit order if number of cups is:
+      this.drink.cups == null || // empty
+      this.drink.cups == '' || // empty
+      this.drink.cups <= 0 || // not positive
+      !Number.isInteger(this.drink.cups) // not an integer
+    ) {
       this.message = '';
     } else if (
+      // Are there enough ingredients to fulfill an order for tea?
       this.drink.name == 'tea' &&
-      (this.drink.cups * 0.006 > 1.89 ||
-        //(this.drink.cups * 0.006 > this.container.tea ||
-        this.drink.cups * 0.065 > 14.17 ||
-        //this.drink.cups * 0.006 > this.container.water ||
-        this.drink.cups * 0.044 > 14.39 ||
-        //this.drink.cups * 0.006 > this.container.milk ||
-        this.drink.cups * 0.017 > 7.91)
-      //this.drink.cups * 0.017 > this.container.sugar)
+      (this.drink.cups * teaPerCup > 1.89 ||
+        //(this.drink.cups * teaPerCup > this.container.tea ||
+        this.drink.cups * waterPerCup > 14.17 ||
+        //this.drink.cups * waterPerCup > this.container.water ||
+        this.drink.cups * milkPerCup > 14.39 ||
+        //this.drink.cups * milkPerCup > this.container.milk ||
+        this.drink.cups * sugarPerCup > 7.91)
+      //this.drink.cups * sugarPerCup > this.container.sugar)
     ) {
-      this.message = 'Insufficient ingredients to create order';
+      // If not, do not submit order; display error message
+      this.message = 'Insufficient ingredients to fulfill order';
     } else if (
+      // Are there enough ingredients to fulfill an order for black tea?
       this.drink.name == 'black tea' &&
-      (this.drink.cups * 0.006 > 1.89 ||
-        //(this.drink.cups * 0.006 > this.container.tea ||
-        this.drink.cups * 0.065 > 14.17 ||
-        //this.drink.cups * 0.006 > this.container.water ||
-        this.drink.cups * 0.017 > 7.91)
-      //this.drink.cups * 0.017 > this.container.sugar)
+      (this.drink.cups * teaPerCup > 1.89 ||
+        //(this.drink.cups * teaPerCup > this.container.tea ||
+        this.drink.cups * waterPerCup > 14.17 ||
+        //this.drink.cups * waterPerCup > this.container.water ||
+        this.drink.cups * sugarPerCup > 7.91)
+      //this.drink.cups * sugarPerCup > this.container.sugar)
     ) {
-      this.message = 'Insufficient ingredients to create order';
+      // If not, do not submit order; display error message
+      this.message = 'Insufficient ingredients to fulfill order';
     } else if (
+      // Are there enough ingredients to fulfill an order for coffee?
       this.drink.name == 'coffee' &&
-      (this.drink.cups * 0.006 > 2 ||
-        //(this.drink.cups * 0.006 > this.container.coffee ||
-        this.drink.cups * 0.065 > 14.17 ||
-        //this.drink.cups * 0.006 > this.container.water ||
-        this.drink.cups * 0.044 > 14.39 ||
-        //this.drink.cups * 0.006 > this.container.milk ||
-        this.drink.cups * 0.017 > 7.91)
-      //this.drink.cups * 0.017 > this.container.sugar)
+      (this.drink.cups * coffeePerCup > 2 ||
+        //(this.drink.cups * coffeePerCup > this.container.coffee ||
+        this.drink.cups * waterPerCup > 14.17 ||
+        //this.drink.cups * waterPerCup > this.container.water ||
+        this.drink.cups * milkPerCup > 14.39 ||
+        //this.drink.cups * milkPerCup > this.container.milk ||
+        this.drink.cups * sugarPerCup > 7.91)
+      //this.drink.cups * sugarPerCup > this.container.sugar)
     ) {
-      this.message = 'Insufficient ingredients to create order';
+      // If not, do not submit order; display error message
+      this.message = 'Insufficient ingredients to fulfill order';
     } else if (
+      // Are there enough ingredients to fulfill an order for black coffee?
       this.drink.name == 'black coffee' &&
-      (this.drink.cups * 0.006 > 2 ||
-        //(this.drink.cups * 0.006 > this.container.coffee ||
-        this.drink.cups * 0.065 > 14.17 ||
-        //this.drink.cups * 0.006 > this.container.water ||
-        this.drink.cups * 0.017 > 7.91)
-      //this.drink.cups * 0.017 > this.container.sugar)
+      (this.drink.cups * coffeePerCup > 2 ||
+        //(this.drink.cups * coffeePerCup > this.container.coffee ||
+        this.drink.cups * waterPerCup > 14.17 ||
+        //this.drink.cups * waterPerCup > this.container.water ||
+        this.drink.cups * sugarPerCup > 7.91)
+      //this.drink.cups * sugarPerCup > this.container.sugar)
     ) {
-      this.message = 'Insufficient ingredients to create order';
+      // If not, do not submit order; display error message
+      this.message = 'Insufficient ingredients to fulfill order';
     } else {
+      // Create message stating drink order
       if (this.drink.cups == 1) {
-        this.message =
-          this.drink.cups + ' cup of ' + this.drink.name + ' produced';
+        this.message = '1 cup of ' + this.drink.name + ' produced';
       } else {
         this.message =
           this.drink.cups + ' cups of ' + this.drink.name + ' produced';
       }
+      // Display drink order in console
       console.log(JSON.stringify(this.drink));
+      // Submit drink to database
       this.drinkService.chooseDrink(this.drink).subscribe(
         (drink) => {},
         (err) => {
