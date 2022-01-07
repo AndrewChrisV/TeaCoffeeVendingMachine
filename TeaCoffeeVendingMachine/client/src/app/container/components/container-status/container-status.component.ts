@@ -11,6 +11,13 @@ export class ContainerStatusComponent implements OnInit {
   container: any = {};
   err: any = {};
 
+  // Maximum capacities of containers
+  maxTea: number = 2;
+  maxCoffee: number = 2;
+  maxSugar: number = 8;
+  maxWater: number = 15;
+  maxMilk: number = 15;
+
   constructor(
     private containerService: ContainerService,
     private router: Router
@@ -19,7 +26,9 @@ export class ContainerStatusComponent implements OnInit {
   ngOnInit(): void {
     this.containerService.getContainer().subscribe(
       (req) => {
+        // Get container from database
         this.container = req;
+        // Display contents of container to console
         console.log(JSON.stringify(this.container));
       },
       (err) => {
