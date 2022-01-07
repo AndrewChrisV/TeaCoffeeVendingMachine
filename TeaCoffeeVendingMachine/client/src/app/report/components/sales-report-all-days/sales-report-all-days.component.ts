@@ -11,6 +11,12 @@ export class SalesReportAllDaysComponent implements OnInit {
   salesAllDays: any = {};
   err: any = {};
 
+  // prices per cup of each type of drink
+  costTea: number = 10;
+  costBlackTea: number = 5;
+  costCoffee: number = 15;
+  costBlackCoffee: number = 10;
+  
   constructor(private reportService: ReportService, private router: Router) {}
 
   ngOnInit(): void {
