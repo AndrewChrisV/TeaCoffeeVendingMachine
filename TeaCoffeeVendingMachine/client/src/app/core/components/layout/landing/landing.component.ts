@@ -10,6 +10,7 @@ export class LandingComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    // The landing page automatically redirects to the Home (Choose Drink) page
     this.router.navigate(['/home']);
   }
 }
