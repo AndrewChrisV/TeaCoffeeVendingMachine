@@ -3,6 +3,13 @@ import { Router } from '@angular/router';
 //import { ContainerService } from '../../../container/services/container.service';
 import { DrinkService } from '../../services/drink.service';
 
+// amounts of each ingredient in one cup
+const teaPerCup: number = 0.006;
+const coffeePerCup: number = 0.006;
+const waterPerCup: number = 0.065;
+const milkPerCup: number = 0.044;
+const sugarPerCup: number = 0.017;
+
 @Component({
   selector: 'app-choose-drink',
   templateUrl: './choose-drink.component.html',
@@ -35,13 +42,6 @@ export class ChooseDrinkComponent implements OnInit {
   }
 
   chooseDrinkSubmit() {
-    // amounts of each ingredient in one cup
-    const teaPerCup: number = 0.006;
-    const coffeePerCup: number = 0.006;
-    const waterPerCup: number = 0.065;
-    const milkPerCup: number = 0.044;
-    const sugarPerCup: number = 0.017;
-
     if (
       // Do not submit order if number of cups is:
       this.drink.cups == null || // empty
