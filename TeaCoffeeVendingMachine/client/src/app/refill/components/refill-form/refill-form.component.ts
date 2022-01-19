@@ -69,10 +69,19 @@ export class RefillFormComponent implements OnInit {
       this.message = 'Please enter legitimate value for sugar.';
     else if (isNaN(this.refill.water) || this.refill.water < 0)
       this.message = 'Please enter legitimate value for water.';
-    else if (isNaN(this.refill.milk) || this.refill.milk < 0) {
+    else if (isNaN(this.refill.milk) || this.refill.milk < 0)
       this.message = 'Please enter legitimate value for milk.';
-      // Prevent ordering too much tea
-    } else if (this.refill.tea > maxTea - 1.89) {
+    // Do not submit an empty refill order
+    else if (
+      this.refill.tea == 0 &&
+      this.refill.coffee == 0 &&
+      this.refill.sugar == 0 &&
+      this.refill.water == 0 &&
+      this.refill.milk == 0
+    )
+      this.message = '';
+    // Prevent ordering too much tea
+    else if (this.refill.tea > maxTea - 1.89) {
       //if (this.refill.tea > maxTea - this.container.tea) {
       this.message =
         'You cannot order more than ' +
