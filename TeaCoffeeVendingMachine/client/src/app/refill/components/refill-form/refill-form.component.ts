@@ -61,18 +61,18 @@ export class RefillFormComponent implements OnInit {
       this.refill.milk = 0;
 
     // Check that input values are nonnegative numbers
-    if (isNaN(this.refill.tea) || this.refill.tea < 0)
+    if (isNaN(this.refill.tea) || this.refill.tea < 0) {
       this.message = 'Please enter legitimate value for tea.';
-    else if (isNaN(this.refill.coffee) || this.refill.coffee < 0)
+    } else if (isNaN(this.refill.coffee) || this.refill.coffee < 0) {
       this.message = 'Please enter legitimate value for coffee.';
-    else if (isNaN(this.refill.sugar) || this.refill.sugar < 0)
+    } else if (isNaN(this.refill.sugar) || this.refill.sugar < 0) {
       this.message = 'Please enter legitimate value for sugar.';
-    else if (isNaN(this.refill.water) || this.refill.water < 0)
+    } else if (isNaN(this.refill.water) || this.refill.water < 0) {
       this.message = 'Please enter legitimate value for water.';
-    else if (isNaN(this.refill.milk) || this.refill.milk < 0)
+    } else if (isNaN(this.refill.milk) || this.refill.milk < 0) {
       this.message = 'Please enter legitimate value for milk.';
-    // Do not submit an empty refill order
-    else if (
+      // Do not submit an empty refill order
+    } else if (
       this.refill.tea == 0 &&
       this.refill.coffee == 0 &&
       this.refill.sugar == 0 &&
