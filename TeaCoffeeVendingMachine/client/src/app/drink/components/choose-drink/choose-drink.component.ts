@@ -43,13 +43,10 @@ export class ChooseDrinkComponent implements OnInit {
 
   chooseDrinkSubmit() {
     if (
-      // Do not submit order if number of cups is:
-      this.drink.cups == null || // empty
-      this.drink.cups == '' || // empty
-      this.drink.cups <= 0 || // not positive
-      !Number.isInteger(this.drink.cups) // not an integer
-    ) {
-      this.message = '';
+    // Is cups is a positive number?
+    if (isNaN(this.drink.cups) || this.drink.cups <= 0) {
+      // If not, do not submit order; display error message
+      this.message = 'Please enter legitimate value';
     } else if (
       // Are there enough ingredients to fulfill an order for tea?
       this.drink.name == 'tea' &&
