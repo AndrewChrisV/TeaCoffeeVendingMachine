@@ -16,10 +16,14 @@ const sugarPerCup: number = 0.017;
   styleUrls: ['./choose-drink.component.css'],
 })
 export class ChooseDrinkComponent implements OnInit {
-  drink: any = {};
-  message: string = '';
+  drink: any = {}; // type of tea and number of cups ordered
+  tea: number; // number of cups of tea ordered
+  blackTea: number; // number of cups of  blacktea ordered
+  coffee: number; // number of cups of coffee ordered
+  blackCoffee: number; // number of cups of black coffee ordered
+  message: string = ''; // message to display on top of page
   //container: any = {};
-  err: any = {};
+  err: any = {}; // in case of error
 
   constructor(
     private drinkService: DrinkService,
@@ -42,7 +46,12 @@ export class ChooseDrinkComponent implements OnInit {
   }
 
   chooseDrinkSubmit() {
-    // Is number of cups a positive integer?
+    // Store appropriate value for cups
+    if (this.drink.name == 'tea') this.drink.cups = this.tea;
+    else if (this.drink.name == 'black tea') this.drink.cups = this.blackTea;
+    else if (this.drink.name == 'coffee') this.drink.cups = this.coffee;
+    else this.drink.cups = this.blackCoffee;
+    // Is cups a positive integer?
     if (this.drink.cups <= 0 || this.drink.cups % 1 != 0) {
       // If not, do not submit order; display error message
       this.message = 'Please enter legitimate value';
